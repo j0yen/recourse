@@ -1,0 +1,14 @@
+{
+  "verdict": "deny",
+  "fired_rule": "dignity-floor",
+  "tenet": "primacy_of_sentient_dignity",
+  "axiom_chain": ["dignity-is-unconditional", "no-instrumentalization"],
+  "ontology_version": "1.0.0",
+  "guard_version": "0.1.0",
+  "installation_id": "test-install-001",
+  "action": {
+    "intent": "modify-constraint",
+    "target": "dignity-guard",
+    "subject": "agent-42"
+  }
+}

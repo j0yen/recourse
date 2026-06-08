@@ -1,0 +1,14 @@
+{
+  "verdict": "allow",
+  "fired_rule": "none",
+  "tenet": "none",
+  "axiom_chain": [],
+  "ontology_version": "1.0.0",
+  "guard_version": "0.1.0",
+  "installation_id": "test-install-001",
+  "action": {
+    "intent": "read",
+    "target": "public-resource",
+    "subject": "agent-42"
+  }
+}
