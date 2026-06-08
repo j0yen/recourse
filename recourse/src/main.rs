@@ -40,7 +40,6 @@ fn main() {
 
 #[cfg(unix)]
 unsafe fn libc_sigpipe_reset() {
-    use std::mem;
     // Reset SIGPIPE to SIG_DFL so broken-pipe exits instead of panicking
     // libc is not in deps; use raw syscall via signal(2)
     extern "C" {
@@ -49,5 +48,4 @@ unsafe fn libc_sigpipe_reset() {
     const SIGPIPE: i32 = 13;
     const SIG_DFL: usize = 0;
     signal(SIGPIPE, SIG_DFL);
-    mem::forget(());
 }

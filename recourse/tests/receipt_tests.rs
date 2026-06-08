@@ -177,7 +177,6 @@ fn ac4_show_reconstructs_fields() {
 // AC5: ls filters by verdict and since; newest-first; json format
 #[test]
 fn ac5_ls_filter_newest_first() {
-    use chrono::{Duration, Utc};
     let tmp = TempDir::new().unwrap();
     let base = tmp.path();
 

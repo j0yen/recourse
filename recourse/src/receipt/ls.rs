@@ -1,5 +1,4 @@
 use crate::receipt::store;
-use crate::receipt::types::Receipt;
 use chrono::{Duration, Utc};
 use std::path::PathBuf;
 
@@ -54,16 +53,3 @@ fn parse_duration_days(s: &str) -> Result<i64, Box<dyn std::error::Error>> {
     }
 }
 
-/// Helper used in tests
-#[cfg(test)]
-pub fn filter_receipts(receipts: Vec<Receipt>, since_days: Option<i64>, verdict: Option<&str>) -> Vec<Receipt> {
-    let mut out = receipts;
-    if let Some(days) = since_days {
-        let cutoff = Utc::now() - Duration::days(days);
-        out.retain(|r| r.ts >= cutoff);
-    }
-    if let Some(v) = verdict {
-        out.retain(|r| r.verdict == v);
-    }
-    out
-}
