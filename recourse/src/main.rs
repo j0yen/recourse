@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
 
+mod amend;
 mod receipt;
 
 #[derive(Parser)]
@@ -16,6 +17,8 @@ enum Commands {
         #[command(subcommand)]
         subcommand: receipt::ReceiptCommand,
     },
+    /// Amend an upheld field contest into a tribunal-corpus case
+    Amend(amend::AmendArgs),
 }
 
 fn main() {
@@ -31,6 +34,7 @@ fn main() {
     let cli = Cli::parse();
     let result = match cli.command {
         Commands::Receipt { subcommand } => receipt::run(subcommand),
+        Commands::Amend(args) => amend::run(args),
     };
     if let Err(e) = result {
         eprintln!("error: {e}");
