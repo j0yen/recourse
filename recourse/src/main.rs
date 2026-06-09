@@ -2,6 +2,7 @@ use clap::{Parser, Subcommand};
 
 mod amend;
 mod feedback;
+mod pulse;
 mod receipt;
 
 #[derive(Parser)]
@@ -25,6 +26,9 @@ enum Commands {
     /// Use `recourse feedback propose` to gather upheld contests into a reviewer-gated
     /// changeset proposal, then `recourse feedback ship <version> --confirm` to publish.
     Feedback(feedback::FeedbackArgs),
+    /// Aggregate-only field health report: verdict distribution, contest rate,
+    /// per-axiom fire counts, version drift. Privacy: never emits per-receipt rows.
+    Pulse(pulse::PulseArgs),
 }
 
 fn main() {
@@ -42,6 +46,7 @@ fn main() {
         Commands::Receipt { subcommand } => receipt::run(subcommand),
         Commands::Amend(args) => amend::run(args),
         Commands::Feedback(args) => feedback::run(args),
+        Commands::Pulse(args) => pulse::run(args),
     };
     if let Err(e) = result {
         eprintln!("error: {e}");
