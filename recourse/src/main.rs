@@ -1,6 +1,7 @@
 use clap::{Parser, Subcommand};
 
 mod amend;
+mod feedback;
 mod receipt;
 
 #[derive(Parser)]
@@ -19,6 +20,11 @@ enum Commands {
     },
     /// Amend an upheld field contest into a tribunal-corpus case
     Amend(amend::AmendArgs),
+    /// Propose and ship versioned ontology changesets from upheld contests
+    ///
+    /// Use `recourse feedback propose` to gather upheld contests into a reviewer-gated
+    /// changeset proposal, then `recourse feedback ship <version> --confirm` to publish.
+    Feedback(feedback::FeedbackArgs),
 }
 
 fn main() {
@@ -35,6 +41,7 @@ fn main() {
     let result = match cli.command {
         Commands::Receipt { subcommand } => receipt::run(subcommand),
         Commands::Amend(args) => amend::run(args),
+        Commands::Feedback(args) => feedback::run(args),
     };
     if let Err(e) = result {
         eprintln!("error: {e}");
