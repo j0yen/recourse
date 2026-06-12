@@ -6,7 +6,7 @@
 pub mod report;
 pub mod since;
 
-pub use report::{build_report, build_report_with_known_tenets, ContestEntry, PulseReport};
+pub use report::{build_report, ContestEntry, PulseReport};
 pub use since::parse_since;
 
 use clap::Args;

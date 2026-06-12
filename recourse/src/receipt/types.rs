@@ -34,6 +34,7 @@ pub struct Receipt {
 }
 
 impl Receipt {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         action_digest: String,
         verdict: String,

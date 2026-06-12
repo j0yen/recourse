@@ -87,7 +87,7 @@ pub fn read_current(data_dir: &Path) -> Result<Version, Box<dyn std::error::Erro
         .map_err(|e| format!("cannot parse {}: {e}", path.display()))?;
     Version::parse(&vf.version)
         .map_err(|e| format!("invalid version in {}: {e}", path.display()))
-        .map_err(|e| Box::<dyn std::error::Error>::from(e))
+        .map_err(Box::<dyn std::error::Error>::from)
 }
 
 /// Write the current shipped version to `<data_dir>/feedback/version.toml`.
