@@ -94,6 +94,7 @@ impl ContestStore {
 
 /// A fake in-memory store for testing (used by tests/amend_tests.rs).
 #[allow(dead_code)]
+#[derive(Default)]
 pub struct FakeUpheldStore {
     pub contests: Vec<UpheldContest>,
 }
@@ -101,9 +102,7 @@ pub struct FakeUpheldStore {
 #[allow(dead_code)]
 impl FakeUpheldStore {
     pub fn new() -> Self {
-        FakeUpheldStore {
-            contests: Vec::new(),
-        }
+        Self::default()
     }
 
     pub fn add(&mut self, contest: UpheldContest) {

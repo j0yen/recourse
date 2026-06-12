@@ -65,15 +65,21 @@ pub struct RecordedTribunalRunner {
     pub validate_should_fail: RefCell<bool>,
 }
 
-#[allow(dead_code)]
-impl RecordedTribunalRunner {
-    pub fn new() -> Self {
+impl Default for RecordedTribunalRunner {
+    fn default() -> Self {
         RecordedTribunalRunner {
             validate_calls: Arc::new(Mutex::new(Vec::new())),
             gate_calls: Arc::new(Mutex::new(Vec::new())),
             gate_should_fail: RefCell::new(false),
             validate_should_fail: RefCell::new(false),
         }
+    }
+}
+
+#[allow(dead_code)]
+impl RecordedTribunalRunner {
+    pub fn new() -> Self {
+        Self::default()
     }
 
     pub fn set_gate_fails(&self) {

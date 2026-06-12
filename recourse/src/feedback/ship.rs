@@ -63,13 +63,19 @@ pub struct RecordedTribunalGate {
     pub fail_next: RefCell<Option<String>>,
 }
 
-impl RecordedTribunalGate {
-    #[allow(dead_code)]
-    pub fn new() -> Self {
+impl Default for RecordedTribunalGate {
+    fn default() -> Self {
         RecordedTribunalGate {
             calls: RefCell::new(Vec::new()),
             fail_next: RefCell::new(None),
         }
+    }
+}
+
+impl RecordedTribunalGate {
+    #[allow(dead_code)]
+    pub fn new() -> Self {
+        Self::default()
     }
 
     #[allow(dead_code)]

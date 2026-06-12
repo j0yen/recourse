@@ -55,13 +55,19 @@ pub struct RecordedHeraldClient {
     pub fail_next: RefCell<Option<String>>,
 }
 
-impl RecordedHeraldClient {
-    #[allow(dead_code)]
-    pub fn new() -> Self {
+impl Default for RecordedHeraldClient {
+    fn default() -> Self {
         RecordedHeraldClient {
             calls: RefCell::new(Vec::new()),
             fail_next: RefCell::new(None),
         }
+    }
+}
+
+impl RecordedHeraldClient {
+    #[allow(dead_code)]
+    pub fn new() -> Self {
+        Self::default()
     }
 
     #[allow(dead_code)]
