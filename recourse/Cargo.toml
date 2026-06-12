@@ -1,6 +1,6 @@
 [package]
 name = "recourse"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 rust-version = "1.85"
 description = "Durability and field-improvement loop for ousia-guard verdicts"
